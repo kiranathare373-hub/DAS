@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+<h2>Book Appointment with {{ doctor.name }}</h2>
+<p>Specialty: {{ doctor.specialty }}</p>
+<form method="post">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required min="{{ today }}">
+    
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+    
+    <button type="submit">Book Appointment</button>
+</form>
+<a href="{{ url_for('doctors') }}">Back to Doctors</a>
+{% endblock %}

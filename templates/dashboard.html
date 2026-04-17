@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }}!</h2>
+<h3>Your Appointments</h3>
+{% if appointments %}
+    <ul>
+        {% for appointment in appointments %}
+            <li>
+                {{ appointment.doctor.name }} - {{ appointment.date }} at {{ appointment.time }}
+                <a href="{{ url_for('cancel', appointment_id=appointment.id) }}">Cancel</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You have no appointments.</p>
+{% endif %}
+<a href="{{ url_for('doctors') }}">Book a new appointment</a>
+{% endblock %}
